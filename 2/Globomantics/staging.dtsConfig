@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+<DTSConfigurationHeading>
+<DTSConfigurationFileInfo GeneratedBy="PRAVEEN" GeneratedFromPackageName="Package" GeneratedFromPackageID="{4C9D5482-1E03-403D-99DC-501B89BC5756}" GeneratedDate="2/5/2021 5:00:34 PM"/>
+</DTSConfigurationHeading>
+<Configuration ConfiguredType="Property" Path="\Package.Connections[PRAVEEN.Globomantics2].Properties[InitialCatalog]" ValueType="String">
+<ConfiguredValue>Globomantics2</ConfiguredValue></Configuration></DTSConfiguration>
