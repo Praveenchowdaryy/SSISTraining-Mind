@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/3/2021 3:24:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PRAVEEN"
+  DTS:CreatorName="PRAVEEN\ADMIN"
+  DTS:DTSID="{2977851B-778C-478A-9C0B-F94AAD92F800}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{741105CB-7BF3-4F32-801A-6EAAF6BDA7B3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[connection1]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{D42B1B01-1E8E-4F01-B43E-997A604CEDAB}"
+      DTS:ObjectName="connection1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRAVEEN]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+      DTS:ObjectName="PRAVEEN">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=PRAVEEN;UseWindowsAuthentication=True;UserName=;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRAVEEN\PRAVEEN2]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{7CBC58C6-BB76-4E58-912D-D0562416D40F}"
+      DTS:ObjectName="PRAVEEN\PRAVEEN2">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=PRAVEEN\PRAVEEN2;UseWindowsAuthentication=True;UserName=;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\History Cleanup Task"
+      DTS:CreationName="Microsoft.DbMaintenanceHistoryCleanupTask"
+      DTS:Description="History Cleanup Task"
+      DTS:DTSID="{09AFAE52-4F7A-40D4-8515-883076BA3217}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceHistoryCleanupTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="History Cleanup Task"
+      DTS:TaskContact="History Cleanup Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D42B1B01-1E8E-4F01-B43E-997A604CEDAB}"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False"
+          SQLTask:RemoveBackupRestoreHistory="True"
+          SQLTask:RemoveAgentHistory="True"
+          SQLTask:RemoveDbMaintHistory="True"
+          SQLTask:RemoveOlderThan="1"
+          SQLTask:TimeUnitsType="1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Shrink Database Task"
+      DTS:CreationName="Microsoft.DbMaintenanceShrinkTask"
+      DTS:Description="Shrink Database Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{33207B50-C28A-4FFE-B1BB-F2336D3DE20E}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceShrinkTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Shrink Database Task"
+      DTS:TaskContact="Shrink Database Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D42B1B01-1E8E-4F01-B43E-997A604CEDAB}"
+          SQLTask:DatabaseSelectionType="4"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False"
+          SQLTask:DatabaseSizeLimit="50"
+          SQLTask:DatabasePercentLimit="10"
+          SQLTask:DatabaseReturnFreeSpace="True" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:SelectedDatabases
+            SQLTask:DatabaseName="praveen" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Database Task"
+      DTS:CreationName="Microsoft.TransferDatabaseTask"
+      DTS:Description="Transfer Database Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{26BDA9DB-3288-4478-B504-5CBE756FBC29}"
+      DTS:ExecutableType="Microsoft.TransferDatabaseTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Database Task"
+      DTS:TaskContact="Transfer Database Task; Microsoft Corporation; SQL Server 2019; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferDatabasesTaskData
+          SrcConn="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          DestConn="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          SrcDBName="praveen"
+          ReattachSrcDB="True"
+          SrcDBFiles="&quot;praveen.mdf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;;&quot;praveen_log.ldf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;"
+          DestDBName="COPYpraveen"
+          DestDBFiles="&quot;COPYpraveen.mdf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;;&quot;COPYpraveen_log.ldf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;"
+          DestOverwrite="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Error Messages Task"
+      DTS:CreationName="Microsoft.TransferErrorMessagesTask"
+      DTS:Description="Transfer Error Messages Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{9F755EEC-6981-4754-80F9-58390DBF361A}"
+      DTS:ExecutableType="Microsoft.TransferErrorMessagesTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Error Messages Task"
+      DTS:TaskContact="Transfer Error Messages Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferErrorMessagesTaskData
+          ErrorMessagesList="1,5,60000,"
+          ErrorMessageLanguagesList="1,4,1033,"
+          IfObjectExists="Overwrite"
+          SourceConnection="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          DestinationConnection="{7CBC58C6-BB76-4E58-912D-D0562416D40F}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Jobs Task"
+      DTS:CreationName="Microsoft.TransferJobsTask"
+      DTS:Description="Transfer Jobs Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{1B859397-5A58-485E-BEF4-27BEDD676036}"
+      DTS:ExecutableType="Microsoft.TransferJobsTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Jobs Task"
+      DTS:TaskContact="Transfer Jobs Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferJobsTaskData
+          JobsList="1,7,jobTest,"
+          SourceConnection="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          DestinationConnection="{7CBC58C6-BB76-4E58-912D-D0562416D40F}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Logins Task"
+      DTS:CreationName="Microsoft.TransferLoginsTask"
+      DTS:Description="Transfer Logins Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{1B388FD7-D5D9-4B31-B1EF-74D411CB7841}"
+      DTS:ExecutableType="Microsoft.TransferLoginsTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Logins Task"
+      DTS:TaskContact="Transfer Error Messages Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="5">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferLoginsTaskData
+          CopySids="True"
+          LoginList="1,32,##MS_SSISServerCleanupJobLogin##,"
+          SourceConnection="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          DestinationConnection="{7CBC58C6-BB76-4E58-912D-D0562416D40F}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Master Stored Procedures Task"
+      DTS:CreationName="Microsoft.TransferStoredProceduresTask"
+      DTS:Description="Transfer Master Stored Procedures Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{FC324E7F-9C16-4E5C-8B7F-BF0D573F4C91}"
+      DTS:ExecutableType="Microsoft.TransferStoredProceduresTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Master Stored Procedures Task"
+      DTS:TaskContact="Transfer Stored Procedures Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="6">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferStoredProceduresTaskData
+          StoredProceduresList="1,15,sp_ssis_startup,"
+          IfObjectExists="Skip"
+          SourceConnection="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          m_DestinationConnectionID="{7CBC58C6-BB76-4E58-912D-D0562416D40F}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer SQL Server Objects Task"
+      DTS:CreationName="Microsoft.TransferSqlServerObjectsTask"
+      DTS:Description="Transfer SQL Server Objects Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{25985DA4-96E3-4503-A3F2-85D5CEB5EC73}"
+      DTS:ExecutableType="Microsoft.TransferSqlServerObjectsTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer SQL Server Objects Task"
+      DTS:TaskContact="Transfer Objects Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="7">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferSqlServerObjectsTaskData
+          SourceConnection="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          DestinationConnection="{7CBC58C6-BB76-4E58-912D-D0562416D40F}"
+          SourceDatabase="praveen"
+          DestinationDatabase="master"
+          TablesList="1,21,[dbo].[dataTransform],"
+          DropObjectsFirst="True"
+          CopyData="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Transfer Database Task"
+          TopLeft="53,25" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Transfer Error Messages Task"
+          TopLeft="44,105" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Transfer Jobs Task"
+          TopLeft="71,203" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Transfer Logins Task"
+          TopLeft="48,270" />
+        <NodeLayout
+          Size="278,42"
+          Id="Package\Transfer Master Stored Procedures Task"
+          TopLeft="339,14" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Transfer SQL Server Objects Task"
+          TopLeft="345,91" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Shrink Database Task"
+          TopLeft="366,182" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\History Cleanup Task"
+          TopLeft="358,317" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

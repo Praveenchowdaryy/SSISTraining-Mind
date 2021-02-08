@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/3/2021 3:24:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PRAVEEN"
+  DTS:CreatorName="PRAVEEN\ADMIN"
+  DTS:DTSID="{2977851B-778C-478A-9C0B-F94AAD92F800}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{C9F1DA05-B6D3-44EB-8FB2-C2967CABCACB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRAVEEN]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+      DTS:ObjectName="PRAVEEN">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=PRAVEEN;UseWindowsAuthentication=True;UserName=;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRAVEEN\PRAVEEN2]"
+      DTS:CreationName="SMOServer"
+      DTS:DTSID="{7CBC58C6-BB76-4E58-912D-D0562416D40F}"
+      DTS:ObjectName="PRAVEEN\PRAVEEN2">
+      <DTS:ObjectData>
+        <SMOServerConnectionManager
+          ConnectionString="SqlServerName=PRAVEEN\PRAVEEN2;UseWindowsAuthentication=True;UserName=;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Database Task"
+      DTS:CreationName="Microsoft.TransferDatabaseTask"
+      DTS:Description="Transfer Database Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{26BDA9DB-3288-4478-B504-5CBE756FBC29}"
+      DTS:ExecutableType="Microsoft.TransferDatabaseTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Database Task"
+      DTS:TaskContact="Transfer Database Task; Microsoft Corporation; SQL Server 2019; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferDatabasesTaskData
+          SrcConn="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          DestConn="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          SrcDBName="praveen"
+          ReattachSrcDB="True"
+          SrcDBFiles="&quot;praveen.mdf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;;&quot;praveen_log.ldf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;"
+          DestDBName="COPYpraveen"
+          DestDBFiles="&quot;COPYpraveen.mdf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;;&quot;COPYpraveen_log.ldf&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;,&quot;C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA&quot;"
+          DestOverwrite="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Error Messages Task"
+      DTS:CreationName="Microsoft.TransferErrorMessagesTask"
+      DTS:Description="Transfer Error Messages Task"
+      DTS:DTSID="{9F755EEC-6981-4754-80F9-58390DBF361A}"
+      DTS:ExecutableType="Microsoft.TransferErrorMessagesTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Error Messages Task"
+      DTS:TaskContact="Transfer Error Messages Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <TransferErrorMessagesTaskData
+          ErrorMessagesList="1,5,60000,"
+          ErrorMessageLanguagesList="1,4,1033,"
+          IfObjectExists="Overwrite"
+          SourceConnection="{DFF7F8FB-130E-45E8-B5E5-0B3CF52CB3D2}"
+          DestinationConnection="{7CBC58C6-BB76-4E58-912D-D0562416D40F}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Transfer Database Task"
+          TopLeft="53,25" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Transfer Error Messages Task"
+          TopLeft="274,173" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

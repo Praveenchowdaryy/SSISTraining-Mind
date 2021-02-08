@@ -1,0 +1,543 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/3/2021 2:20:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PRAVEEN"
+  DTS:CreatorName="PRAVEEN\ADMIN"
+  DTS:DTSID="{31988E00-33CC-436C-97D3-2F94C209E564}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{0B8A54F3-48D7-4FC2-AF06-D2386B15DDAB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CONNECTION2]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+      DTS:ObjectName="CONNECTION2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:Description="ifItistrue peroform incre"
+      DTS:DTSID="{F308FFB9-746C-4469-9F9E-6EF0377FAF7B}"
+      DTS:ObjectName="BackupTask"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Back Up Database Task"
+      DTS:CreationName="Microsoft.DbMaintenanceBackupTask"
+      DTS:Description="Back Up Database Task"
+      DTS:DTSID="{2021BC77-12DC-438F-9110-887E194ACA97}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceBackupTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Back Up Database Task"
+      DTS:TaskContact="Back Up Database Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="BackupIsIncremental">@[$Project::BackUpDatabaseTask_BackupIsIncremental]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+          SQLTask:DatabaseSelectionType="4"
+          SQLTask:ServerVersion="15"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="True"
+          SQLTask:BackupAction="0"
+          SQLTask:BackupIsIncremental="False"
+          SQLTask:BackupFileGroupsFiles=""
+          SQLTask:BackupDeviceType="2"
+          SQLTask:BackupPhysicalDestinationType="2"
+          SQLTask:BackupDestinationType="0"
+          SQLTask:BackupDestinationAutoFolderPath="C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup"
+          SQLTask:BackupActionForExistingBackups="0"
+          SQLTask:BackupCreateSubFolder="False"
+          SQLTask:BackupFileExtension=""
+          SQLTask:BackupVerifyIntegrity="False"
+          SQLTask:ExpireDate="2021-02-17T00:00:00"
+          SQLTask:RetainDays="14"
+          SQLTask:InDays="True"
+          SQLTask:UseExpiration="False"
+          SQLTask:BackupCompressionAction="0"
+          SQLTask:CopyOnlyBackup="False"
+          SQLTask:IgnoreReplicaType="False"
+          SQLTask:CredentialName=""
+          SQLTask:ContainerName=""
+          SQLTask:UrlPrefix=""
+          SQLTask:IsBackupEncrypted="False"
+          SQLTask:BackupEncryptionAlgorithm="0"
+          SQLTask:BackupEncryptorType="0"
+          SQLTask:BackupEncryptorName=""
+          SQLTask:Checksum="False"
+          SQLTask:ContinueOnError="False"
+          SQLTask:IsBlockSizeUsed="False"
+          SQLTask:IsMaxTransferSizeUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:SelectedDatabases
+            SQLTask:DatabaseName="demo" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Check Database Integrity Task"
+      DTS:CreationName="Microsoft.DbMaintenanceCheckIntegrityTask"
+      DTS:Description="Check Database Integrity Task"
+      DTS:DTSID="{74E2360F-6246-474F-9D83-BBC91EA99FEA}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceCheckIntegrityTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Check Database Integrity Task"
+      DTS:TaskContact="Check Database Integrity Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+          SQLTask:DatabaseSelectionType="4"
+          SQLTask:ServerVersion="15"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="True"
+          SQLTask:IncludeIndexes="True"
+          SQLTask:PhysicalOnly="False"
+          SQLTask:Tablock="False"
+          SQLTask:MaximumDegreeOfParallelismUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:SelectedDatabases
+            SQLTask:DatabaseName="demo" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Maintenance Cleanup Task"
+      DTS:CreationName="Microsoft.DbMaintenanceFileCleanupTask"
+      DTS:Description="Maintenance Cleanup Task"
+      DTS:DTSID="{381E1635-1B04-4662-A25D-608260FDB73F}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceFileCleanupTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Maintenance Cleanup Task"
+      DTS:TaskContact="File Cleanup Task; Microsoft Corporation; Microsoft SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False"
+          SQLTask:FileTypeSelected="0"
+          SQLTask:FilePath=""
+          SQLTask:FolderPath="C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup"
+          SQLTask:CleanSubFolders="True"
+          SQLTask:FileExtension="bak"
+          SQLTask:AgeBased="True"
+          SQLTask:DeleteSpecificFile="False"
+          SQLTask:RemoveOlderThan="1"
+          SQLTask:TimeUnitsType="5" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Notify Operator Task"
+      DTS:CreationName="Microsoft.DbMaintenanceNotifyOperatorTask"
+      DTS:Description="Notify Operator Task"
+      DTS:DTSID="{5BA296FB-D776-40B9-AA9A-7761265D6E35}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceNotifyOperatorTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Notify Operator Task"
+      DTS:TaskContact="Notify Operator Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+          SQLTask:ServerVersion="15"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False"
+          SQLTask:Message="Your done with the task !&#xA;&#xA;Thank you Praveen"
+          SQLTask:Profile="DefaultProfile"
+          SQLTask:Subject=":::::::::::::::::Task Status :::::::::::::::::::" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:OperatorNotifyList
+            SQLTask:OperatorNotify="notifyme" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Rebuild Index Task"
+      DTS:CreationName="Microsoft.DbMaintenanceReindexTask"
+      DTS:Description="Rebuild Index Task"
+      DTS:DTSID="{0D19B1D9-42AC-4B97-8DA8-111D4DEB2504}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceReindexTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Rebuild Index Task"
+      DTS:TaskContact="Rebuild Index Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+          SQLTask:DatabaseSelectionType="4"
+          SQLTask:ServerVersion="15"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="True"
+          SQLTask:UseOriginalAmount="True"
+          SQLTask:Percentage="20"
+          SQLTask:Sort="False"
+          SQLTask:KeepOnline="True"
+          SQLTask:SkipUnsupported="False"
+          SQLTask:PadIndex="True"
+          SQLTask:MaximumDegreeOfParallelismUsed="False"
+          SQLTask:LowPriorityUsed="False"
+          SQLTask:CheckFragmentationPercentUsed="False"
+          SQLTask:CheckPageCountUsed="False"
+          SQLTask:CheckLastUsageInDaysUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:SelectedDatabases
+            SQLTask:DatabaseName="demo" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Reorganize Index Task"
+      DTS:CreationName="Microsoft.DbMaintenanceDefragmentIndexTask"
+      DTS:Description="Reorganize Index Task"
+      DTS:DTSID="{AD831904-87D2-4A4C-9105-240CB126FAE5}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceDefragmentIndexTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Reorganize Index Task"
+      DTS:TaskContact="Reorganize Index Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+          SQLTask:DatabaseSelectionType="4"
+          SQLTask:ServerVersion="15"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="True"
+          SQLTask:CompactLargeObjects="True"
+          SQLTask:CheckFragmentationPercentUsed="False"
+          SQLTask:CheckPageCountUsed="False"
+          SQLTask:CheckLastUsageInDaysUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:SelectedDatabases
+            SQLTask:DatabaseName="demo" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Statistics Task"
+      DTS:CreationName="Microsoft.DbMaintenanceUpdateStatisticsTask"
+      DTS:Description="Update Statistics Task"
+      DTS:DTSID="{E5F8D0D1-D653-465D-97E8-D758A5529C9A}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceUpdateStatisticsTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Statistics Task"
+      DTS:TaskContact="Update Statistics Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3DB0ADC2-F3A6-4763-82EE-68F31703B13C}"
+          SQLTask:DatabaseSelectionType="4"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False"
+          SQLTask:UpdateStatisticsType="2"
+          SQLTask:UpdateScanType="3"
+          SQLTask:UpdateSampleValue="50" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:SelectedDatabases
+            SQLTask:DatabaseName="demo" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{556FD41C-BCC8-4F77-B00C-09E026A0AFAD}"
+      DTS:From="Package\Back Up Database Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Check Database Integrity Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{62811E4A-A182-49B5-9B15-2EEA336BDAAB}"
+      DTS:From="Package\Check Database Integrity Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Rebuild Index Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{127FE942-0AED-4392-83FE-C48B2929372D}"
+      DTS:From="Package\Rebuild Index Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Reorganize Index Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{0341FF52-D880-4B8E-9957-010B4E911DB5}"
+      DTS:From="Package\Reorganize Index Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update Statistics Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{643BE64A-2193-452F-A535-3B144081384F}"
+      DTS:From="Package\Update Statistics Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Maintenance Cleanup Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{0D169BC7-8020-4BF2-A509-6ED6D8CD192C}"
+      DTS:From="Package\Maintenance Cleanup Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Notify Operator Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Back Up Database Task"
+          TopLeft="21.5,5.5" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\Check Database Integrity Task"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Maintenance Cleanup Task"
+          TopLeft="532,179" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Notify Operator Task"
+          TopLeft="497,305" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Rebuild Index Task"
+          TopLeft="33.5,209.5" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Reorganize Index Task"
+          TopLeft="24,311.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Update Statistics Task"
+          TopLeft="402,25" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="120,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="120,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="120,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="150.666666666667,311.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="345.333333333333,-244.5"
+              Start="0,0"
+              End="345.333333333333,-237">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-95.0123966942149" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-95.0123966942149"
+                    Point2="0,-99.0123966942149"
+                    Point3="4,-99.0123966942149" />
+                  <mssgle:LineSegment
+                    End="341.333333333333,-99.0123966942149" />
+                  <mssgle:CubicBezierSegment
+                    Point1="341.333333333333,-99.0123966942149"
+                    Point2="345.333333333333,-99.0123966942149"
+                    Point3="345.333333333333,-103.012396694215" />
+                  <mssgle:LineSegment
+                    End="345.333333333333,-237" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="526,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112.5,112"
+              Start="0,0"
+              End="112.5,104.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.3670886075949" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.3670886075949"
+                    Point2="0,45.3670886075949"
+                    Point3="4,45.3670886075949" />
+                  <mssgle:LineSegment
+                    End="108.5,45.3670886075949" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108.5,45.3670886075949"
+                    Point2="112.5,45.3670886075949"
+                    Point3="112.5,49.3670886075949" />
+                  <mssgle:LineSegment
+                    End="112.5,104.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="638.5,221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-51.5,84"
+              Start="0,0"
+              End="-51.5,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38"
+                    Point2="0,42"
+                    Point3="-4,42" />
+                  <mssgle:LineSegment
+                    End="-47.5,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.5,42"
+                    Point2="-51.5,42"
+                    Point3="-51.5,46" />
+                  <mssgle:LineSegment
+                    End="-51.5,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
